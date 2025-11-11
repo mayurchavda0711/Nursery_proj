@@ -1,0 +1,28 @@
+.nav-link {
+  position: relative;
+  color: white !important;
+  transition: color 0.3s ease;
+  text-decoration: none;
+}
+
+/* Create underline animation */
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: #ffffff;
+  transition: width 0.3s ease;
+}
+
+/* Hover Effect */
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Optional: change text color slightly on hover */
+.nav-link:hover {
+  color: #a7e9c2 !important;
+}

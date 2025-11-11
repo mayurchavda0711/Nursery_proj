@@ -1,16 +1,15 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from "react";
+import Header from "./components/Header";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-    <h1>hello</h1>
+      <Header />
+      <div className="container mt-5 text-center text-success">
+        {/* <h2>Welcome to Shree Ram Dharu 🌿</h2> */}
+      </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
