@@ -2,6 +2,7 @@ import React from "react";
 import { Carousel, Container, Row, Col, Card, Button } from "react-bootstrap";
 import { Leaf, ShoppingBag, Users, Award, Phone, Mail, MapPin, Heart } from "lucide-react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import PlantCollection from "./plants";
 
 const sliderImages = [
 
@@ -49,7 +50,7 @@ export default function Home() {
           </Carousel.Item>
         ))}
       </Carousel>
-
+<PlantCollection />
       {/* 🌿 About Section */}
       <section className="py-5 bg-light">
         <Container>
