@@ -56,8 +56,8 @@ const Footer = () => {
           {/* Right: Contact Info */}
           <div className="col-md-4 text-md-end">
             <h6 className="fw-bold mb-3">Contact Us</h6>
-            <p className="text-white-50 mb-1">Email: info@shreeramdharu.com</p>
-            <p className="text-white-50 mb-0">Phone: +91 98765 43210</p>
+            <p className="text-white-50 mb-1">Email: shreeramdharufarm85@gmail.com</p>
+            <p className="text-white-50 mb-0">Phone: +91 98987 49719</p>
           </div>
         </div>
 
