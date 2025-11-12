@@ -1,4 +1,5 @@
 import React from "react";
+import "./Footer.css";
 import { Leaf } from "lucide-react";
 
 const Footer = () => {

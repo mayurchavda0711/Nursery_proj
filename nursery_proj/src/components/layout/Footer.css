@@ -1,0 +1,44 @@
+.footer-custom {
+  width: 100vw; /* Full viewport width */
+  background-color: #06331f;
+  color: white;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.footer-inner {
+  max-width: 1300px; /* control content width */
+  margin: 0 auto; /* center it */
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.footer-custom a {
+  color: #ffffff;
+  transition: color 0.3s ease;
+}
+
+.footer-custom a:hover {
+  color: #8ddba4;
+}
+
+/* Footer stays below content */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
+footer {
+  margin-top: auto;
+}
