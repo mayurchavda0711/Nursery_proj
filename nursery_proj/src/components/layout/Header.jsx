@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom"; // ✅ Import Link from React Router
 import { FaLeaf, FaSearch, FaUser, FaShoppingCart } from "react-icons/fa";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Header.css";
@@ -22,24 +23,24 @@ function Header() {
         {/* Center: Navigation */}
         <ul className="navbar-nav mx-auto mb-0 d-flex flex-row gap-4">
           <li className="nav-item">
-            <a className="nav-link fw-semibold text-white" href="#">
+            <Link to="/" className="nav-link fw-semibold text-white">
               Home
-            </a>
+            </Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link fw-semibold text-white" href="#">
+            <Link to="/shop" className="nav-link fw-semibold text-white">
               Shop
-            </a>
+            </Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link fw-semibold text-white" href="#">
+            <Link to="/about" className="nav-link fw-semibold text-white">
               About Us
-            </a>
+            </Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link fw-semibold text-white" href="#">
+            <Link to="/contact" className="nav-link fw-semibold text-white">
               Contact Us
-            </a>
+            </Link>
           </li>
         </ul>
 
@@ -47,7 +48,9 @@ function Header() {
         <div className="d-flex align-items-center gap-4">
           <FaSearch size={18} />
           <FaUser size={18} />
-          <span className="fw-semibold">Login</span>
+          <Link to="/login" className="text-white fw-semibold text-decoration-none">
+            Login
+          </Link>
           <FaShoppingCart size={20} />
         </div>
       </div>

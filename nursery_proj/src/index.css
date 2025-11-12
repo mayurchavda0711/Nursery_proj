@@ -1,4 +1,4 @@
-:root {
+ /* :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -65,4 +65,84 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+} 
+  */
+
+  /* --- Sticky + Responsive Footer --- */
+
+/* Keep layout full height */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
+
+/* Make root use flex layout */
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Main content takes space above footer */
+main {
+  flex: 1;
+}
+
+/* Footer Styling */
+.footer-custom {
+  width: 100%;
+  background-color: #06331f;
+  color: white;
+  position: fixed;          /* make sticky */
+  bottom: 0;                /* stick to bottom */
+  left: 0;
+  z-index: 1000;
+  padding: 20px 0;
+  text-align: left;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.footer-inner {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+/* Footer links */
+.footer-custom a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer-custom a:hover {
+  text-decoration: underline;
+}
+
+/* Footer copyright */
+.footer-bottom {
+  text-align: center;
+  padding-top: 10px;
+  font-size: 14px;
+  color: #ccc;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  margin-top: 10px;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+  .footer-inner {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+
+  .footer-custom {
+    padding: 15px 0;
+  }
+}
+

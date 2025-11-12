@@ -1,89 +1,70 @@
 import React from "react";
-import "./Footer.css";
-import { Leaf } from "lucide-react";
+import { FaLeaf } from "react-icons/fa";
+import { Link } from "react-router-dom"; // ✅ Import Link
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const Footer = () => {
   return (
     <footer
       className="text-light pt-5 pb-3"
-      style={{
-        backgroundColor: "#06331f",
-        color: "#f8f9fa",
-      }}
+      style={{ backgroundColor: "#06331f" }}
     >
-      <div className="container-fluid">
+      <div className="container">
         <div className="row border-bottom border-secondary pb-4">
-          {/* Left Section */}
+          {/* Left: Logo & About */}
           <div className="col-md-4 mb-4 mb-md-0">
-            <h5 className="d-flex align-items-center mb-3" style={{ color: "#ffffff" }}>
-              <Leaf size={20} className="me-2" />
-              Shree Ram Dharu Farm & Nursery
-            </h5>
-            <p className="small" style={{ color: "#b0b0b0" }}>
-              Your trusted source for quality nursery plants. We bring nature to your doorstep.
+            <div className="d-flex align-items-center mb-2">
+              <FaLeaf size={24} className="me-2 text-light" />
+              <h5 className="m-0 fw-bold">Shree Ram Dharu Farm & Nursery</h5>
+            </div>
+            <p className="text-white-50 mb-0">
+              Your trusted source for quality nursery plants. We bring nature to
+              your doorstep.
             </p>
           </div>
 
-          {/* Quick Links */}
-          <div className="col-md-4 mb-4 mb-md-0">
-            <h5 className="mb-3" style={{ color: "#ffffff" }}>
-              Quick Links
-            </h5>
-            <ul className="list-unstyled small" style={{ color: "#b0b0b0" }}>
-              <li className="mb-2">
-                <a href="/" className="text-decoration-none" style={{ color: "#b0b0b0" }}>
+          {/* Center: Quick Links */}
+          <div className="col-md-4 mb-4 mb-md-0 text-md-center">
+            <h6 className="fw-bold mb-3">Quick Links</h6>
+            <ul className="list-unstyled">
+              <li>
+                <Link to="/" className="text-white-50 text-decoration-none">
                   Home
-                </a>
-              </li>
-              <li className="mb-2">
-                <a href="/shop" className="text-decoration-none" style={{ color: "#b0b0b0" }}>
-                  Shop
-                </a>
-              </li>
-              <li className="mb-2">
-                <a href="/about" className="text-decoration-none" style={{ color: "#b0b0b0" }}>
-                  About Us
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/contact" className="text-decoration-none" style={{ color: "#b0b0b0" }}>
+                <Link to="/shop" className="text-white-50 text-decoration-none">
+                  Shop
+                </Link>
+              </li>
+              <li>
+                <Link to="/about" className="text-white-50 text-decoration-none">
+                  About Us
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/contact"
+                  className="text-white-50 text-decoration-none"
+                >
                   Contact Us
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
 
-          {/* Contact Section */}
-          <div className="col-md-4">
-            <h5 className="mb-3" style={{ color: "#ffffff" }}>
-              Contact Us
-            </h5>
-            <p className="small mb-1" style={{ color: "#b0b0b0" }}>
-              Email:{" "}
-              <a
-                href="mailto:info@shreeramdharu.com"
-                className="text-decoration-none"
-                style={{ color: "#f8f9fa" }}
-              >
-                info@shreeramdharu.com
-              </a>
-            </p>
-            <p className="small" style={{ color: "#b0b0b0" }}>
-              Phone:{" "}
-              <a
-                href="tel:+919876543210"
-                className="text-decoration-none"
-                style={{ color: "#f8f9fa" }}
-              >
-                +91 98765 43210
-              </a>
-            </p>
+          {/* Right: Contact Info */}
+          <div className="col-md-4 text-md-end">
+            <h6 className="fw-bold mb-3">Contact Us</h6>
+            <p className="text-white-50 mb-1">Email: info@shreeramdharu.com</p>
+            <p className="text-white-50 mb-0">Phone: +91 98765 43210</p>
           </div>
         </div>
 
-        {/* Bottom Line */}
-        <div className="text-center mt-3 small" style={{ color: "#b0b0b0" }}>
-          © 2025 Shree Ram Dharu Farm & Nursery. All rights reserved.
+        {/* Bottom line */}
+        <div className="text-center mt-3 text-white-50 small">
+          © {new Date().getFullYear()} Shree Ram Dharu Farm & Nursery. All
+          rights reserved.
         </div>
       </div>
     </footer>
