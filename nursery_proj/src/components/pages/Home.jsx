@@ -7,22 +7,22 @@ import PlantCollection from "./plants";
 const sliderImages = [
   
   {
-    url: "https://images.pexels.com/photos/5808/food-healthy-vegetables-village.jpg",
-    title: "Fresh & Healthy",
+    url: "https://images.pexels.com/photos/19870193/pexels-photo-19870193.jpeg",
+    title: "Vegetables Plants",
     description: "Quality plants nurtured with care",
   },
   {
-    url: "https://img.freepik.com/free-photo/vibrant-wildflowers-colorful-field_23-2151975541.jpg?t=st=1763024760~exp=1763028360~hmac=e6e7af73d79fbcb7b185155591faeb055444d4a4af7c42c81718c3a6a2caf7aa&w=1480",
+    url: "https://images.pexels.com/photos/25752971/pexels-photo-25752971.jpeg",
     title: "Flower Plants",
     description: "Rare and unique plant collection",
   },
   {
-    url: "https://homegardenandhomestead.com/wp-content/uploads/2022/05/beautiful-houseplants.jpeg",
+    url: "https://images.pexels.com/photos/5859710/pexels-photo-5859710.jpeg",
     title: "Indoor & Outdoor",
     description: "Wide variety for every space",
   },
   {
-    url: "https://5.imimg.com/data5/NW/FU/MY-12812279/broccoli-500x500.jpeg",
+    url: "https://images.pexels.com/photos/2280567/pexels-photo-2280567.jpeg",
     title: "Exotic Plants",
     description: "Rare and unique plant collection",
   },
@@ -33,7 +33,7 @@ export default function Home() {
   return (
     <>
       {/* 🌿 Bootstrap Carousel */}
-      <Carousel fade interval={2000} controls indicators>
+      <Carousel fade interval={2500} controls indicators>
         {sliderImages.map((slide, index) => (
           <Carousel.Item key={index}>
             <img
