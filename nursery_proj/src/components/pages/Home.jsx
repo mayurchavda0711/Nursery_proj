@@ -5,11 +5,16 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import PlantCollection from "./plants";
 
 const sliderImages = [
-
+  
   {
-    url: "https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?w=1200",
+    url: "https://images.pexels.com/photos/5808/food-healthy-vegetables-village.jpg",
     title: "Fresh & Healthy",
     description: "Quality plants nurtured with care",
+  },
+  {
+    url: "https://img.freepik.com/free-photo/vibrant-wildflowers-colorful-field_23-2151975541.jpg?t=st=1763024760~exp=1763028360~hmac=e6e7af73d79fbcb7b185155591faeb055444d4a4af7c42c81718c3a6a2caf7aa&w=1480",
+    title: "Flower Plants",
+    description: "Rare and unique plant collection",
   },
   {
     url: "https://homegardenandhomestead.com/wp-content/uploads/2022/05/beautiful-houseplants.jpeg",
@@ -21,11 +26,7 @@ const sliderImages = [
     title: "Exotic Plants",
     description: "Rare and unique plant collection",
   },
-   {
-    url: "https://images.pexels.com/photos/5808/food-healthy-vegetables-village.jpg",
-    title: "Flower Plants",
-    description: "Rare and unique plant collection",
-  },
+   
 ];
 
 export default function Home() {
