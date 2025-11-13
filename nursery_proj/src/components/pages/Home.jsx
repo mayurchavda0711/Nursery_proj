@@ -12,12 +12,12 @@ const sliderImages = [
     description: "Quality plants nurtured with care",
   },
   {
-    url: "https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=1200",
+    url: "https://images.pexels.com/photos/5808/food-healthy-vegetables-village.jpg",
     title: "Indoor & Outdoor",
     description: "Wide variety for every space",
   },
   {
-    url: "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=1200",
+    url: "https://5.imimg.com/data5/NW/FU/MY-12812279/broccoli-500x500.jpeg",
     title: "Exotic Plants",
     description: "Rare and unique plant collection",
   },
