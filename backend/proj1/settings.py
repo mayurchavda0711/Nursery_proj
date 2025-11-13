@@ -74,10 +74,15 @@ WSGI_APPLICATION = 'proj1.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'mysql.connector.django',
+        'NAME': 'nurserydb',   # your MySQL database name
+        'USER': 'root',         # your MySQL username
+        'PASSWORD': 'mayur@123',         # your MySQL password (leave empty if none)
+        'HOST': 'localhost',    # or '127.0.0.1'
+        'PORT': '3306',         # default MySQL port
     }
 }
+
 
 
 # Password validation
