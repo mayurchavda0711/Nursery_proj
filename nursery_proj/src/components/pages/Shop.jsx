@@ -1,10 +1,11 @@
 import React from "react";
+import PlantCollection from "./plants";
 
 function Shop() {
   return (
     <div className="text-center mt-5 pt-5">
-      <h2>Shop</h2>
-      <p>Browse our wide range of plants and gardening essentials.</p>
+      <PlantCollection/>
+      
     </div>
   );
 }

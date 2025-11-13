@@ -3,16 +3,14 @@ import { Carousel, Container, Row, Col, Card, Button } from "react-bootstrap";
 import { Leaf, ShoppingBag, Users, Award, Phone, Mail, MapPin, Heart } from "lucide-react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import PlantCollection from "./plants";
-
 const sliderImages = [
-  
   {
     url: "https://images.pexels.com/photos/19870193/pexels-photo-19870193.jpeg",
     title: "Vegetables Plants",
     description: "Quality plants nurtured with care",
   },
   {
-    url: "https://images.pexels.com/photos/25752971/pexels-photo-25752971.jpeg",
+    url: "https://images.pexels.com/photos/18479660/pexels-photo-18479660.jpeg",
     title: "Flower Plants",
     description: "Rare and unique plant collection",
   },
@@ -26,14 +24,12 @@ const sliderImages = [
     title: "Exotic Plants",
     description: "Rare and unique plant collection",
   },
-   
 ];
 
 export default function Home() {
   return (
     <>
-      {/* 🌿 Bootstrap Carousel */}
-      <Carousel fade interval={2500} controls indicators>
+      <Carousel fade interval={2500} controls indicators pause={false}>
         {sliderImages.map((slide, index) => (
           <Carousel.Item key={index}>
             <img
@@ -42,7 +38,7 @@ export default function Home() {
               alt={slide.title}
               style={{ height: "600px", objectFit: "cover" }}
             />
-            <Carousel.Caption>
+            <Carousel.Caption style={{ bottom: "100px" }}>
               <h2 className="fw-bold display-5">{slide.title}</h2>
               <p className="fs-5">{slide.description}</p>
               <Button
@@ -56,7 +52,7 @@ export default function Home() {
           </Carousel.Item>
         ))}
       </Carousel>
-<PlantCollection />
+      <PlantCollection/>
       {/* 🌿 About Section */}
       <section className="py-5 bg-light">
         <Container>

@@ -34,7 +34,7 @@ const AboutUsPage = () => {
             </Col>
             <Col lg={6}>
               <img
-                src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800"
+                src="https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxLipYSfDuz0YyRxBNGdAUeoI8r1btYstyRIppB26QNlSCRsUllIG7ArzSz2fCFPzcFDYCy534OJUb02tb7fvsnmKl2L5Naq6GConBqN_mI8VYFZg0C_97GVQqveebX3kay0H3h=s1360-w1360-h1020-rw"
                 alt="Our Nursery"
                 className="img-fluid rounded shadow"
               />
