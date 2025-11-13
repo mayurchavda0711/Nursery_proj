@@ -12,7 +12,7 @@ const sliderImages = [
     description: "Quality plants nurtured with care",
   },
   {
-    url: "https://images.pexels.com/photos/5808/food-healthy-vegetables-village.jpg",
+    url: "https://homegardenandhomestead.com/wp-content/uploads/2022/05/beautiful-houseplants.jpeg",
     title: "Indoor & Outdoor",
     description: "Wide variety for every space",
   },
@@ -21,13 +21,18 @@ const sliderImages = [
     title: "Exotic Plants",
     description: "Rare and unique plant collection",
   },
+   {
+    url: "https://images.pexels.com/photos/5808/food-healthy-vegetables-village.jpg",
+    title: "Flower Plants",
+    description: "Rare and unique plant collection",
+  },
 ];
 
 export default function Home() {
   return (
     <>
       {/* 🌿 Bootstrap Carousel */}
-      <Carousel fade interval={4000} controls indicators>
+      <Carousel fade interval={2000} controls indicators>
         {sliderImages.map((slide, index) => (
           <Carousel.Item key={index}>
             <img
