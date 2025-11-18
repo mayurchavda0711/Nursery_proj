@@ -2,8 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
-import PlantCollection from "./components/pages/plants";
-
+import PlantCollection from "./components/pages/Plants";
 // ✅ Import your pages
 import Home from "./components/pages/Home";
 import Shop from "./components/pages/Shop";
