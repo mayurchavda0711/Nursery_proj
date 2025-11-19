@@ -52,6 +52,8 @@ export default function Home() {
           </Carousel.Item>
         ))}
       </Carousel>
+      
+    
       <PlantCollection/>
       {/* 🌿 About Section */}
       <section className="py-5 bg-light">
