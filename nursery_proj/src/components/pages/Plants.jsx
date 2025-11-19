@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FaShoppingCart } from "react-icons/fa";
 import { Search } from "lucide-react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { useCart } from "../../context/CartContext";   // ✅ NEW
+import { useCart } from "../../context/CartContext";   // CART CONTEXT
 
 const plants = [
   {
@@ -10,7 +10,7 @@ const plants = [
     name: "Tomato Plant",
     type: "Vegetables",
     description: "Fresh organic tomato plant for home garden",
-    price: 149,   // ❗ change to number
+    price: 149,
     image: "/images/cabbage.png",
   },
   {
@@ -40,7 +40,7 @@ const plants = [
 ];
 
 const PlantCollection = () => {
-  const { addToCart } = useCart();    // ✅ Access cart function
+  const { addToCart } = useCart();    
   const [searchTerm, setSearchTerm] = useState("");
   const [filterType, setFilterType] = useState("all");
 
@@ -50,6 +50,7 @@ const PlantCollection = () => {
     const matchesSearch = plant.name
       .toLowerCase()
       .includes(searchTerm.toLowerCase());
+
     const matchesFilter =
       filterType === "all" ? true : plant.type === filterType;
 
@@ -57,45 +58,84 @@ const PlantCollection = () => {
   });
 
   return (
-    <section className="py-5 bg-light text-center">
+    <section className="py-5 bg-light">
       <div className="container">
-        <h2 className="text-success mb-3">Our Plant Collection</h2>
 
+        {/* Title */}
+        <h2 className="text-success mb-4 text-center">Our Plant Collection</h2>
+
+        {/* Search Input */}
+        <div className="d-flex justify-content-center mb-3">
+          <div className="position-relative" style={{ width: "320px" }}>
+            <Search
+              size={18}
+              className="position-absolute"
+              style={{ top: "10px", left: "12px", opacity: 0.6 }}
+            />
+            <input
+              type="text"
+              placeholder="Search plants..."
+              className="form-control ps-5"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              style={{ borderRadius: "10px" }}
+            />
+          </div>
+        </div>
+
+        {/* Category Filter Buttons */}
+        <div className="d-flex justify-content-center gap-2 flex-wrap mb-4">
+          {plantTypes.map((type) => (
+            <button
+              key={type}
+              className={`btn ${
+                filterType === type ? "btn-success" : "btn-outline-success"
+              } rounded-pill px-3`}
+              onClick={() => setFilterType(type)}
+            >
+              {type}
+            </button>
+          ))}
+        </div>
+
+        {/* Plant Cards */}
         <div className="row g-4">
           {filteredPlants.map((plant) => (
             <div className="col-md-3 col-sm-6" key={plant.id}>
               <div className="card h-100 shadow-sm border-0">
+
                 <img
                   src={plant.image}
-                  className="card-img-top"
                   alt={plant.name}
+                  className="card-img-top"
                   style={{ height: "200px", objectFit: "cover" }}
                 />
 
                 <div className="card-body text-start">
                   <span className="badge bg-success mb-2">{plant.type}</span>
-                  <h5 className="card-title">{plant.name}</h5>
-                  <p className="text-muted small mb-2">
-                    {plant.description}
-                  </p>
+                  <h5>{plant.name}</h5>
+                  <p className="text-muted small">{plant.description}</p>
                   <h6 className="fw-bold">₹{plant.price}</h6>
                 </div>
 
                 <div className="card-footer bg-transparent border-0">
                   <button
                     className="btn btn-success w-100"
-                    onClick={() => addToCart(plant)}   // ✅ This works now!
+                    onClick={() => addToCart(plant)}
                   >
-                    <FaShoppingCart className="me-2" /> Add to Cart
+                    <FaShoppingCart className="me-2" />
+                    Add to Cart
                   </button>
                 </div>
+
               </div>
             </div>
           ))}
         </div>
 
+        {/* No results */}
         {filteredPlants.length === 0 && (
-          <p className="text-muted mt-4">No plants found.</p>
+          <p className="text-muted text-center mt-4">No plants found.</p>
         )}
       </div>
     </section>

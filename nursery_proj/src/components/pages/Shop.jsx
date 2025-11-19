@@ -3,9 +3,8 @@ import PlantCollection from "./plants";
 
 function Shop() {
   return (
-    <div className="text-center mt-5 pt-5">
-      <PlantCollection/>
-      
+    <div className="mt-5 pt-4">
+      <PlantCollection />
     </div>
   );
 }

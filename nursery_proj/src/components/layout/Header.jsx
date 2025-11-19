@@ -17,9 +17,9 @@ function Header() {
         
         {/* Left: Logo */}
         <div className="d-flex align-items-center">
-          <FaLeaf size={28} className="me-2" />
+          <FaLeaf size={30} className="me-2" />
           <div>
-            <h4 className="m-0 fw-bold">Shree Ram Dharu</h4>
+            <h3 className="m-0 fw-bold">Shree Ram Dharu</h3>
             <small>Farm & Nursery</small>
           </div>
         </div>
@@ -43,7 +43,7 @@ function Header() {
         {/* Right: Icons */}
         <div className="d-flex align-items-center gap-4">
 
-          <FaSearch size={18} />
+          {/* <FaSearch size={18} /> */}
           <FaUser size={18} />
 
           <Link to="/login" className="text-white fw-semibold text-decoration-none">

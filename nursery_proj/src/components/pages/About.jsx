@@ -43,41 +43,7 @@ const AboutUsPage = () => {
         </Container>
       </section>
 
-      {/* 🌸 Our Values Section */}
-      <section className="py-5">
-        <Container>
-          <h2 className="text-center text-success mb-5">Our Values</h2>
-          <Row>
-            {[
-              {
-                title: "Quality First",
-                text: "We ensure every plant is healthy and of the highest quality.",
-              },
-              {
-                title: "Customer Care",
-                text: "Your satisfaction is our priority — we’re here to guide you.",
-              },
-              {
-                title: "Expertise",
-                text: "Years of hands-on experience in plant care and cultivation.",
-              },
-              {
-                title: "Community",
-                text: "We believe in growing together with nature lovers everywhere.",
-              },
-            ].map((item, index) => (
-              <Col md={6} lg={3} key={index} className="mb-4">
-                <Card className="h-100 border-0 shadow-sm text-center">
-                  <Card.Body>
-                    <h5 className="text-success">{item.title}</h5>
-                    <Card.Text className="text-muted">{item.text}</Card.Text>
-                  </Card.Body>
-                </Card>
-              </Col>
-            ))}
-          </Row>
-        </Container>
-      </section>
+    
 
       {/* 🌻 CTA Section */}
       <section className="py-5 text-white text-center" style={{ backgroundColor: "#06331f" }}>

@@ -11,7 +11,7 @@ const sliderImages = [
     description: "Quality plants nurtured with care",
   },
   {
-    url: "https://images.pexels.com/photos/18479660/pexels-photo-18479660.jpeg",
+    url: "https://images.pexels.com/photos/768890/pexels-photo-768890.jpeg",
     title: "Flower Plants",
     description: "Rare and unique plant collection",
   },
@@ -24,6 +24,11 @@ const sliderImages = [
     url: "https://images.pexels.com/photos/2280567/pexels-photo-2280567.jpeg",
     title: "Exotic Plants",
     description: "Rare and unique plant collection",
+  },
+  {
+    url: "https://images.pexels.com/photos/589226/pexels-photo-589226.jpeg",
+    title: "Herbal plants",
+    description: "Fresh, natural, and medicinal herbs for everyday health",
   },
 ];
 
