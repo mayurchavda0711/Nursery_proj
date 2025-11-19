@@ -3,6 +3,7 @@ import { Carousel, Container, Row, Col, Card, Button } from "react-bootstrap";
 import { Leaf, ShoppingBag, Users, Award, Phone, Mail, MapPin, Heart } from "lucide-react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import PlantCollection from "./Plants";
+import { Link } from "react-router-dom";
 const sliderImages = [
   {
     url: "https://images.pexels.com/photos/19870193/pexels-photo-19870193.jpeg",
@@ -41,13 +42,15 @@ export default function Home() {
             <Carousel.Caption style={{ bottom: "100px" }}>
               <h2 className="fw-bold display-5">{slide.title}</h2>
               <p className="fs-5">{slide.description}</p>
+              <Link to="/shop">
               <Button
-                variant="success"
-                className="px-4 py-2 mt-2"
-                style={{ backgroundColor: "#06331f", border: "none" }}
+               variant="success"
+               className="px-4 py-2 mt-2"
+               style={{ backgroundColor: "#06331f", border: "none" }}
               >
-                Shop Now
+                 Shop Now
               </Button>
+              </Link>
             </Carousel.Caption>
           </Carousel.Item>
         ))}
