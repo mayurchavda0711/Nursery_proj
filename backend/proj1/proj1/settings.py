@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-h9*&g6$dbr_=d0@%nz5ug7z_52rq-r0m=yofnmik!fzc@oqdj!'
+SECRET_KEY = 'django-insecure-2%@-(_37of9b+=9z3*-e(23a0l_sv(kakfbq$h+q4+c*6z#&pz'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -37,13 +37,20 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'api',
+    'rest_framework',
+    'rest_framework.authtoken',
+    'corsheaders',
 ]
+
+CORS_ALLOW_ALL_ORIGINS = True
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -74,16 +81,14 @@ WSGI_APPLICATION = 'proj1.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'mysql.connector.django',
-        'NAME': 'nurserydb',   # your MySQL database name
-        'USER': 'root',         # your MySQL username
-        'PASSWORD': 'mayur@123',         # your MySQL password (leave empty if none)
-        'HOST': 'localhost',    # or '127.0.0.1'
-        'PORT': '3306',         # default MySQL port
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'nurserydb',
+        'USER': 'root',
+        'PASSWORD': 'mayur@123',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
-
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
