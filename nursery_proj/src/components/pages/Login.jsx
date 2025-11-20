@@ -2,9 +2,13 @@ import React, { useState } from "react";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { FaUser, FaLock, FaEnvelope } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+
 
 const LoginPage = () => {
   const [isSignUp, setIsSignUp] = useState(false);
+ 
+const navigate = useNavigate();
 
   // input states
   const [name, setName] = useState("");
@@ -44,7 +48,8 @@ const LoginPage = () => {
         });
 
         alert("Login Successful!");
-        console.log(res.data);
+        navigate("/");   // 👈 this redirects to homepage
+
 
       } catch (err) {
         alert("Login Failed: " + err.response.data.error);
