@@ -3,12 +3,13 @@ import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { FaUser, FaLock, FaEnvelope } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-
+import { useAuth } from "../../context/AuthContext";   // ✅ Added
 
 const LoginPage = () => {
   const [isSignUp, setIsSignUp] = useState(false);
- 
-const navigate = useNavigate();
+  const navigate = useNavigate();
+
+  const { login } = useAuth();   // ✅ Added — get login() from AuthContext
 
   // input states
   const [name, setName] = useState("");
@@ -36,7 +37,7 @@ const navigate = useNavigate();
         alert("Account Created Successfully!");
         setIsSignUp(false);
       } catch (err) {
-        alert("Signup Error: " + err.response.data.error);
+        alert("Signup Error: " + err.response?.data?.error);
       }
 
     } else {
@@ -47,12 +48,18 @@ const navigate = useNavigate();
           password,
         });
 
-        alert("Login Successful!");
-        navigate("/");   // 👈 this redirects to homepage
+        // ✅ Save user in AuthContext (important)
+        login({
+          name: res.data.name,
+          email: res.data.email,
+        });
 
+        alert("Login Successful!");
+
+        navigate("/");  // Redirect
 
       } catch (err) {
-        alert("Login Failed: " + err.response.data.error);
+        alert("Login Failed: " + err.response?.data?.error);
       }
     }
   };
