@@ -1,19 +1,18 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { FaUser, FaLock, FaEnvelope } from "react-icons/fa";
+import { FaUser, FaLock, FaEnvelope, FaPhone } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../context/AuthContext";   // ✅ Added
+import { useAuth } from "../../context/AuthContext";
 
 const LoginPage = () => {
   const [isSignUp, setIsSignUp] = useState(false);
   const navigate = useNavigate();
+  const { login } = useAuth();
 
-  const { login } = useAuth();   // ✅ Added — get login() from AuthContext
-
-  // input states
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
@@ -21,16 +20,21 @@ const LoginPage = () => {
     e.preventDefault();
 
     if (isSignUp) {
-      // SIGNUP
       if (password !== confirmPassword) {
         alert("Passwords do not match");
         return;
       }
 
+      if (!/^\d{10}$/.test(phone)) {
+        alert("Phone number must be exactly 10 digits");
+        return;
+      }
+
       try {
-        const res = await axios.post("http://127.0.0.1:8000/api/register/", {
+        await axios.post("http://127.0.0.1:8000/api/register/", {
           name,
           email,
+          phone,
           password,
         });
 
@@ -39,25 +43,20 @@ const LoginPage = () => {
       } catch (err) {
         alert("Signup Error: " + err.response?.data?.error);
       }
-
     } else {
-      // LOGIN
       try {
         const res = await axios.post("http://127.0.0.1:8000/api/login/", {
           email,
           password,
         });
 
-        // ✅ Save user in AuthContext (important)
         login({
           name: res.data.name,
           email: res.data.email,
         });
 
         alert("Login Successful!");
-
-        navigate("/");  // Redirect
-
+        navigate("/");
       } catch (err) {
         alert("Login Failed: " + err.response?.data?.error);
       }
@@ -74,25 +73,54 @@ const LoginPage = () => {
 
         <form onSubmit={handleSubmit}>
           {isSignUp && (
-            <div className="mb-3">
-              <label className="form-label fw-semibold">Full Name</label>
-              <div className="input-group">
-                <span className="input-group-text bg-white"><FaUser /></span>
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="John Doe"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                />
+            <>
+              {/* Full Name */}
+              <div className="mb-3">
+                <label className="form-label fw-semibold">Full Name</label>
+                <div className="input-group">
+                  <span className="input-group-text bg-white"
+                    style={{ zIndex: 5, position: "relative" }}>
+                    <FaUser style={{ fontSize: "16px" }} />
+                  </span>
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="John Doe"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                  />
+                </div>
               </div>
-            </div>
+
+              {/* Phone Number */}
+              <div className="mb-3">
+                <label className="form-label fw-semibold">Phone Number</label>
+                <div className="input-group">
+                  <span className="input-group-text bg-white"
+                    style={{ zIndex: 5, position: "relative", transform: "rotate(90deg)" }}>
+                    <FaPhone style={{ fontSize: "16px" }} />
+                  </span>
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="9876543210"
+                    maxLength="10"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                  />
+                </div>
+              </div>
+            </>
           )}
 
+          {/* Email */}
           <div className="mb-3">
             <label className="form-label fw-semibold">Email Address</label>
             <div className="input-group">
-              <span className="input-group-text bg-white"><FaEnvelope /></span>
+              <span className="input-group-text bg-white"
+                style={{ zIndex: 5, position: "relative" }}>
+                <FaEnvelope style={{ fontSize: "16px" }} />
+              </span>
               <input
                 type="email"
                 className="form-control"
@@ -103,10 +131,14 @@ const LoginPage = () => {
             </div>
           </div>
 
+          {/* Password */}
           <div className="mb-3">
             <label className="form-label fw-semibold">Password</label>
             <div className="input-group">
-              <span className="input-group-text bg-white"><FaLock /></span>
+              <span className="input-group-text bg-white"
+                style={{ zIndex: 5, position: "relative" }}>
+                <FaLock style={{ fontSize: "16px" }} />
+              </span>
               <input
                 type="password"
                 className="form-control"
@@ -121,7 +153,10 @@ const LoginPage = () => {
             <div className="mb-3">
               <label className="form-label fw-semibold">Confirm Password</label>
               <div className="input-group">
-                <span className="input-group-text bg-white"><FaLock /></span>
+                <span className="input-group-text bg-white"
+                  style={{ zIndex: 5, position: "relative" }}>
+                  <FaLock style={{ fontSize: "16px" }} />
+                </span>
                 <input
                   type="password"
                   className="form-control"

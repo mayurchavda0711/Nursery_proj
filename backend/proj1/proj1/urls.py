@@ -6,7 +6,7 @@ def home(request):
     return HttpResponse("Backend Running Successfully!")
 
 urlpatterns = [
-    path("", home),
-    path("admin/", admin.site.urls),
-    path("api/", include("api.urls")),
+    path("", home),                          # Root test URL
+    path("admin/", admin.site.urls),         # Django admin
+    path("api/", include("api.urls")),       # Include your app's API routes
 ]
