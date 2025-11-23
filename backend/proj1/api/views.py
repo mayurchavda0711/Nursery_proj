@@ -3,6 +3,14 @@ from rest_framework.response import Response
 from django.contrib.auth.hashers import check_password
 from .models import UserDetails
 from .serializers import UserDetailsSerializer
+from rest_framework import generics, permissions
+from .serializers import OrderSerializer
+from .models import Order
+
+class OrderCreateView(generics.CreateAPIView):
+    queryset = Order.objects.all()
+    serializer_class = OrderSerializer
+    permission_classes = [permissions.AllowAny]
 
 
 class UserDetailsCreateView(generics.CreateAPIView):
@@ -26,3 +34,6 @@ class LoginView(generics.GenericAPIView):
             return Response({"error": "Invalid password"}, status=400)
 
         return Response({"message": "Login successful", "name": user.name})
+    
+    
+        
