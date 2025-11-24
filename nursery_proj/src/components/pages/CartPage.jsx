@@ -5,9 +5,8 @@ import { useAuth } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-
 export default function CartPage() {
-  const { cartItems, updateQuantity, removeFromCart ,clearCart  } = useCart();
+  const { cartItems, updateQuantity, removeFromCart, clearCart } = useCart();
   const { user } = useAuth();
   const navigate = useNavigate();
 
@@ -18,14 +17,12 @@ export default function CartPage() {
   const [city, setCity] = useState("");
   const [pincode, setPincode] = useState("");
   const [payment, setPayment] = useState("COD");
-  
 
   // PAYMENT STATES
-const [upiId, setUpiId] = useState("");
-const [cardNumber, setCardNumber] = useState("");
-const [expiry, setExpiry] = useState("");
-const [cvv, setCvv] = useState("");
-
+  const [upiId, setUpiId] = useState("");
+  const [cardNumber, setCardNumber] = useState("");
+  const [expiry, setExpiry] = useState("");
+  const [cvv, setCvv] = useState("");
 
   const subtotal = cartItems.reduce(
     (sum, item) => sum + item.price * item.quantity,
@@ -35,7 +32,6 @@ const [cvv, setCvv] = useState("");
   const total = subtotal + shipping;
 
  const handlePlaceOrder = async () => {
-
   if (!user) return navigate("/login");
 
   if (!fullName || !phone || !address || !city || !pincode) {
@@ -48,43 +44,37 @@ const [cvv, setCvv] = useState("");
     return;
   }
 
-  if (payment === "Card") {
-    if (!cardNumber || !expiry || !cvv) {
-      alert("Please fill all card details!");
-      return;
-    }
+  if (payment === "Card" && (!cardNumber || !expiry || !cvv)) {
+    alert("Please fill all card details!");
+    return;
   }
 
-  
- // ----- Prepare order payload for Django -----
-const orderData = {
-  full_name: fullName,
-  phone: phone,
-  address: address,
-  city: city,
-  pincode: pincode,
-  payment_method: payment,
-  total_amount: total,
-};
+  // Convert cart items to comma-separated strings
+  const itemNames = cartItems.map(item => item.name).join(", ");
+  const quantities = cartItems.map(item => item.quantity).join(",");
 
+  const orderData = {
+    full_name: fullName,
+    phone: phone,
+    address: address,
+    city: city,
+    pincode: pincode,
+    payment_method: payment,
+    total_amount: cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0) + (cartItems.length > 0 ? 49 : 0),
+    item_name: itemNames,
+    qty: quantities
+  };
 
   try {
-    const res = await axios.post(
-      "http://127.0.0.1:8000/api/orders/",
-      orderData
-    );
+    const res = await axios.post("http://127.0.0.1:8000/api/orders/", orderData);
 
     console.log("Order Saved in Django:", res.data);
 
     clearCart();
 
-    if (payment === "COD") {
-      navigate("/order-success");
-    } else if (payment === "UPI") {
-      navigate("/upi-payment");
-    } else if (payment === "Card") {
-      navigate("/card-payment");
-    }
+    if (payment === "COD") navigate("/order-success");
+    else if (payment === "UPI") navigate("/upi-payment");
+    else if (payment === "Card") navigate("/card-payment");
 
   } catch (error) {
     console.error("Order API Error:", error);
@@ -93,11 +83,9 @@ const orderData = {
 };
 
 
-
   return (
     <div className="container py-5">
       <h2 className="mb-4 fw-bold text-success">Shopping Cart</h2>
-
       <div className="row">
         {/* CART ITEMS */}
         <div className="col-lg-8">
@@ -240,41 +228,40 @@ const orderData = {
                 <option value="UPI">UPI Payment</option>
                 <option value="Card">Credit/Debit Card</option>
               </select>
-              {/* PAYMENT INPUTS BASED ON METHOD */}
-{payment === "UPI" && (
-  <input
-    className="form-control mb-3"
-    placeholder="Enter UPI ID (example: name@upi)"
-    value={upiId}
-    onChange={(e) => setUpiId(e.target.value)}
-  />
-)}
 
-{payment === "Card" && (
-  <>
-    <input
-      className="form-control mb-2"
-      placeholder="Card Number"
-      value={cardNumber}
-      onChange={(e) => setCardNumber(e.target.value)}
-    />
+              {payment === "UPI" && (
+                <input
+                  className="form-control mb-3"
+                  placeholder="Enter UPI ID (example: name@upi)"
+                  value={upiId}
+                  onChange={(e) => setUpiId(e.target.value)}
+                />
+              )}
 
-    <input
-      className="form-control mb-2"
-      placeholder="Expiry Date (MM/YY)"
-      value={expiry}
-      onChange={(e) => setExpiry(e.target.value)}
-    />
+              {payment === "Card" && (
+                <>
+                  <input
+                    className="form-control mb-2"
+                    placeholder="Card Number"
+                    value={cardNumber}
+                    onChange={(e) => setCardNumber(e.target.value)}
+                  />
 
-    <input
-      className="form-control mb-3"
-      placeholder="CVV"
-      value={cvv}
-      onChange={(e) => setCvv(e.target.value)}
-    />
-  </>
-)}
+                  <input
+                    className="form-control mb-2"
+                    placeholder="Expiry Date (MM/YY)"
+                    value={expiry}
+                    onChange={(e) => setExpiry(e.target.value)}
+                  />
 
+                  <input
+                    className="form-control mb-3"
+                    placeholder="CVV"
+                    value={cvv}
+                    onChange={(e) => setCvv(e.target.value)}
+                  />
+                </>
+              )}
 
               <button
                 className="btn btn-success w-100 py-2"
