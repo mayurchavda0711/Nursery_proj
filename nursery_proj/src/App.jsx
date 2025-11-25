@@ -9,6 +9,8 @@ import Contact from "./components/pages/Contact";
 import Login from "./components/pages/Login";
 import CartPage from "./components/pages/CartPage";
 import OrderSuccess from "./components/pages/OrderSuccess";
+import AdminDashboard from "./components/pages/AdminDashboard";   // <-- ADD THIS
+
 
 
 function App() {
@@ -25,6 +27,8 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/order-success" element={<OrderSuccess />} />
+          <Route path="/admin-dashboard" element={<AdminDashboard />} />
+
 
         </Routes>
       </main>

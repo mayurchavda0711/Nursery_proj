@@ -19,6 +19,9 @@ const LoginPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // -----------------------------
+    // 🔥 SIGN UP CODE
+    // -----------------------------
     if (isSignUp) {
       if (password !== confirmPassword) {
         alert("Passwords do not match");
@@ -43,7 +46,24 @@ const LoginPage = () => {
       } catch (err) {
         alert("Signup Error: " + err.response?.data?.error);
       }
-    } else {
+    } 
+    else {
+      // -----------------------------
+      // 🔥 ADMIN LOGIN CHECK
+      // -----------------------------
+      if (email === "mayur@gmail.com" && password === "123") {
+        login({
+          name: "Admin",
+          email: "mayur@gmail.com",
+        });
+
+        alert("Admin Login Successful!");
+        return navigate("/admin-dashboard");
+      }
+
+      // -----------------------------
+      // 🔥 NORMAL USER LOGIN
+      // -----------------------------
       try {
         const res = await axios.post("http://127.0.0.1:8000/api/login/", {
           email,
@@ -78,8 +98,7 @@ const LoginPage = () => {
               <div className="mb-3">
                 <label className="form-label fw-semibold">Full Name</label>
                 <div className="input-group">
-                  <span className="input-group-text bg-white"
-                    style={{ zIndex: 5, position: "relative" }}>
+                  <span className="input-group-text bg-white">
                     <FaUser style={{ fontSize: "16px" }} />
                   </span>
                   <input
@@ -96,8 +115,7 @@ const LoginPage = () => {
               <div className="mb-3">
                 <label className="form-label fw-semibold">Phone Number</label>
                 <div className="input-group">
-                  <span className="input-group-text bg-white"
-                    style={{ zIndex: 5, position: "relative", transform: "rotate(90deg)" }}>
+                  <span className="input-group-text bg-white" style={{ transform: "rotate(90deg)" }}>
                     <FaPhone style={{ fontSize: "16px" }} />
                   </span>
                   <input
@@ -117,14 +135,13 @@ const LoginPage = () => {
           <div className="mb-3">
             <label className="form-label fw-semibold">Email Address</label>
             <div className="input-group">
-              <span className="input-group-text bg-white"
-                style={{ zIndex: 5, position: "relative" }}>
+              <span className="input-group-text bg-white">
                 <FaEnvelope style={{ fontSize: "16px" }} />
               </span>
               <input
                 type="email"
                 className="form-control"
-                placeholder="john@gmail.com"
+                placeholder="shreeram@gmail.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
@@ -135,8 +152,7 @@ const LoginPage = () => {
           <div className="mb-3">
             <label className="form-label fw-semibold">Password</label>
             <div className="input-group">
-              <span className="input-group-text bg-white"
-                style={{ zIndex: 5, position: "relative" }}>
+              <span className="input-group-text bg-white">
                 <FaLock style={{ fontSize: "16px" }} />
               </span>
               <input
@@ -153,8 +169,7 @@ const LoginPage = () => {
             <div className="mb-3">
               <label className="form-label fw-semibold">Confirm Password</label>
               <div className="input-group">
-                <span className="input-group-text bg-white"
-                  style={{ zIndex: 5, position: "relative" }}>
+                <span className="input-group-text bg-white">
                   <FaLock style={{ fontSize: "16px" }} />
                 </span>
                 <input
@@ -168,8 +183,7 @@ const LoginPage = () => {
             </div>
           )}
 
-          <button type="submit" className="btn w-100 text-white mt-3"
-            style={{ backgroundColor: "#06331f" }}>
+          <button type="submit" className="btn w-100 text-white mt-3" style={{ backgroundColor: "#06331f" }}>
             {isSignUp ? "Create Account" : "Sign In"}
           </button>
         </form>

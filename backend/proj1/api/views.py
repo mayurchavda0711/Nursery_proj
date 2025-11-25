@@ -4,11 +4,13 @@ from django.contrib.auth.hashers import check_password
 from .models import UserDetails, Order
 from .serializers import UserDetailsSerializer, OrderSerializer
 
+
 # CREATE ORDER
 class OrderCreateView(generics.CreateAPIView):
     queryset = Order.objects.all()
     serializer_class = OrderSerializer
     permission_classes = [permissions.AllowAny]
+
 
 # LIST ORDERS
 class OrderListView(generics.ListAPIView):
@@ -16,11 +18,13 @@ class OrderListView(generics.ListAPIView):
     serializer_class = OrderSerializer
     permission_classes = [permissions.AllowAny]
 
+
 # SIGN UP
 class UserDetailsCreateView(generics.CreateAPIView):
     queryset = UserDetails.objects.all()
     serializer_class = UserDetailsSerializer
     permission_classes = [permissions.AllowAny]
+
 
 # LOGIN
 class LoginView(generics.GenericAPIView):
@@ -31,6 +35,17 @@ class LoginView(generics.GenericAPIView):
         email = request.data.get("email")
         password = request.data.get("password")
 
+        # -----------------------------------------------------
+        # 🔥 ADMIN LOGIN (only added code – nothing removed)
+        # -----------------------------------------------------
+        if email == "mayur@gmail.com" and password == "123":
+            return Response({
+                "message": "Admin login successful",
+                "role": "admin"
+            }, status=200)
+        # -----------------------------------------------------
+
+        # NORMAL USER LOGIN (unchanged)
         try:
             user = UserDetails.objects.get(email=email)
         except UserDetails.DoesNotExist:
@@ -43,5 +58,6 @@ class LoginView(generics.GenericAPIView):
             "message": "Login successful",
             "name": user.name,
             "email": user.email,
-            "phone": user.phone
+            "phone": user.phone,
+            "role": "user"      # added role for frontend redirect
         }, status=200)
