@@ -61,3 +61,10 @@ class LoginView(generics.GenericAPIView):
             "phone": user.phone,
             "role": "user"      # added role for frontend redirect
         }, status=200)
+    
+# DELETE ORDER
+class OrderDeleteView(generics.DestroyAPIView):
+    queryset = Order.objects.all()
+    lookup_field = 'order_id'   # delete by order_id (ODR_001)
+    permission_classes = [permissions.AllowAny]
+
