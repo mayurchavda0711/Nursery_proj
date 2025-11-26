@@ -6,10 +6,14 @@ import "./Header.css";
 import { useCart } from "../../context/CartContext";
 import { useAuth } from "../../context/AuthContext"; // ✅ Auth context
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 
 function Header() {
   const { cartItems } = useCart();
   const [openProfile, setOpenProfile] = useState(false);
+  const navigate = useNavigate();
+
 
   const { user, logout } = useAuth(); // ✅ Get user + logout
 
@@ -81,14 +85,16 @@ function Header() {
         <p className="m-0 fw-bold">{user.name}</p>
 
         <button
-          className="btn btn-danger btn-sm w-100 mt-2"
+           className="btn btn-danger btn-sm w-100 mt-2"
           onClick={() => {
-            logout();
-            setOpenProfile(false);
-          }}
-        >
-          Logout
-        </button>
+           logout();              // remove user from auth context
+           setOpenProfile(false); // close menu
+           navigate("/login");    // redirect to login
+         }}
+>
+  Logout
+</button>
+
       </div>
     )}
 
