@@ -3,6 +3,9 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+
+  "homepage": "https://mayurchavda0711.github.io/Nursery_proj/",
+
    "scripts": {
     "dev": "vite --host",
     "build": "vite build",
