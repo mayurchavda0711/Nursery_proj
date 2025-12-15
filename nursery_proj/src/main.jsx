@@ -11,7 +11,7 @@ import { CartProvider } from "./context/CartContext";
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <HashRouter>
+    <HashRouter basename="/Nursery_proj">
       <AuthProvider>
         <CartProvider>
           <App />
