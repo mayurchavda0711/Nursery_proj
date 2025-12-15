@@ -1,5 +1,5 @@
 import React from "react";
-import PlantCollection from "./Plants";
+import PlantCollection from "./Plants.jsx";
 
 function Shop() {
   return (
