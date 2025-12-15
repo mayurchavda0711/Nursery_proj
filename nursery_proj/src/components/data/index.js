@@ -1,9 +1,9 @@
-import { vegetables } from "./vegetables";
-import { exotic } from "./exotic";
-import { flowers } from "./flower";
-import { fruits } from "./fruits";
-import { herbs } from "./herbs";
-import { indoor } from "./indoor";
+import { vegetables } from "./vegetables.js";
+import { exotic } from "./exotic.js";
+import { flowers } from "./flower.js";
+import { fruits } from "./fruits.js";
+import { herbs } from "./herbs.js";
+import { indoor } from "./indoor.js";
 
 export const allPlants = [
   ...vegetables,
