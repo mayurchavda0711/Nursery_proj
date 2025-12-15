@@ -85,12 +85,12 @@ function Header() {
         <p className="m-0 fw-bold">{user.name}</p>
 
         <button
-  className="btn btn-danger btn-sm w-100 mt-2"
-  onClick={() => {
-    logout();
-    setOpenProfile(false);
-    window.location.hash = "#/login";
-  }}
+   className="btn btn-danger btn-sm w-100 mt-2"
+          onClick={() => {
+           logout();              // remove user from auth context
+           setOpenProfile(false); // close menu
+           navigate("/login");    // redirect to login
+         }}
 >
   Logout
 </button>
