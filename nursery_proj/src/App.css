@@ -72,3 +72,57 @@ html, body {
 main {
   flex: 1;
 }
+
+
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+
+/* Tablets */
+@media (max-width: 768px) {
+  .container {
+    width: 95%;
+    padding: 0 10px;
+  }
+  .navbar {
+    flex-direction: column; /* stack menu items */
+  }
+  .sidebar {
+    display: none; /* hide sidebar on tablets */
+  }
+}
+
+/* Mobile phones */
+@media (max-width: 480px) {
+  body {
+    font-size: 14px; /* smaller text for phones */
+  }
+  .menu {
+    flex-direction: column;
+  }
+  .header, .footer {
+    padding: 10px;
+  }
+}
+
+
+/* Before */
+.main-content {
+  width: 1200px;
+}
+
+/* After */
+.main-content {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.navbar {
+  display: flex;
+  flex-wrap: wrap; /* items move to new line if needed */
+  justify-content: space-between;
+}
